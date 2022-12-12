@@ -51,7 +51,26 @@ function sumNumbers(numbers) {
 }
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(numbers) {
+  let totalSum = 0;
+
+  if (!numbers.length) {
+    return totalSum;
+  }
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (typeof numbers[i] === "number") {
+      totalSum += numbers[i];
+    } else if (typeof numbers[i] === "string") {
+      totalSum += numbers[i].length;
+    } else if (typeof numbers[i] === "boolean") {
+      totalSum += numbers[i];
+    } else {
+      throw new Error("Unsupported data type sir or ma'am");
+    }
+  }
+  return totalSum;
+}
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
