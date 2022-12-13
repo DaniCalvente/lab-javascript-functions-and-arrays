@@ -287,7 +287,55 @@ const matrix = [
   ],
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let greatest = 0;
+
+  let horizontalProduct = 0;
+  let verticalProduct = 0;
+  let diagonalProduct = 0;
+  let inverseDiagonalProduct = 0;
+
+  for (let vertical = 0; vertical < matrix.length - 3; vertical++) {
+    for (let horizontal = 0; horizontal < matrix.length - 3; horizontal++) {
+      horizontalProduct =
+        matrix[vertical][horizontal] *
+        matrix[vertical][horizontal + 1] *
+        matrix[vertical][horizontal + 2] *
+        matrix[vertical][horizontal + 3];
+      if (horizontalProduct > greatest) {
+        greatest = horizontalProduct;
+      }
+
+      verticalProduct =
+        matrix[vertical][horizontal] *
+        matrix[vertical + 1][horizontal] *
+        matrix[vertical + 2][horizontal] *
+        matrix[vertical + 3][horizontal];
+      if (verticalProduct > greatest) {
+        greatest = verticalProduct;
+      }
+
+      diagonalProduct =
+        matrix[vertical][horizontal] *
+        matrix[vertical + 1][horizontal + 1] *
+        matrix[vertical + 2][horizontal + 2] *
+        matrix[vertical + 3][horizontal + 3];
+      if (diagonalProduct > greatest) {
+        greatest = diagonalProduct;
+      }
+
+      inverseDiagonalProduct =
+        matrix[vertical][horizontal + 3] *
+        matrix[vertical + 1][horizontal + 2] *
+        matrix[vertical + 2][horizontal + 1] *
+        matrix[vertical + 3][horizontal];
+      if (inverseDiagonalProduct > greatest) {
+        greatest = inverseDiagonalProduct;
+      }
+    }
+  }
+  return greatest;
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
